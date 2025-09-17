@@ -2,10 +2,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
-const cors = require("cors"); //  Add this line
+const cors = require("cors");
 
 const app = express();
-app.use(cors()); //  Enable CORS for all origins
+app.use(cors()); //  Enable's CORS for all origins
 app.use(bodyParser.json());
 
 app.use(bodyParser.json());

@@ -30,15 +30,15 @@ The system allows users to register their details through a frontend interface. 
 # 🖼️ Architecture Diagram
 ```mermaid
 flowchart TD
-    A[User's Browser] -->|Submit details| B[Frontend Pod (Nginx) x3]
+    A[User's Browser] --> B[Frontend Pod (Nginx) x3]
     B -->|frontend-svc (NodePort)| C[Backend Pod (Node.js) x2]
     C -->|backend-svc (ClusterIP)| D[MySQL Pod x1]
     D --> E[(Persistent Volume Claim - PVC)]
 
     %% Responsibilities
-    B ---|"Serve static files\nProxy API Requests"| B
-    C ---|"Handle logic\nReceive requests\nQuery DB"| C
-    D ---|"Persistent storage of user details"| D
+    B --> F[Serves static files & proxies API requests]
+    C --> G[Handles logic, receives requests, queries DB]
+    D --> H[Stores student details with persistence]
 ```
 
 # 📂 Project Structure
