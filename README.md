@@ -1,6 +1,12 @@
+![Kubernetes](https://img.shields.io/badge/Kubernetes-blue?logo=kubernetes)
+![Node.js](https://img.shields.io/badge/Node.js-green?logo=node.js)
+![MySQL](https://img.shields.io/badge/MySQL-orange?logo=mysql)
+
+---
+
 # 📚 Student Registration System on Kubernetes
 
-# 📌 Overview
+## 📌 Overview
 This project is a **3-tier Student Registration System** deployed on **Kubernetes (Minikube)**.  
 It demonstrates how to containerize applications, orchestrate them with Kubernetes, and ensure resilience using **liveness** and **readiness probes**.
 
@@ -17,7 +23,7 @@ The system allows users to register their details through a frontend interface. 
 
 ---
 
-# ⚙️ Features
+## ⚙️ Features
 ✅ **Frontend Pod** (3 replicas) → Serves HTML form for student registration  
 ✅ **Backend Pod** (2 replicas) → Handles API logic, validates input, stores data in DB  
 ✅ **Database Pod** (1 replica) → MySQL with PVC for data durability  
@@ -28,63 +34,31 @@ The system allows users to register their details through a frontend interface. 
 ---
 
 # 🖼️ Architecture Diagram
-```mermaid
-flowchart TD
-  Browser[User's Browser] --> Frontend[Frontend Pod: Nginx x3]
-  Frontend --> FrontendSvc[frontend-svc NodePort]
-  FrontendSvc --> Backend[Backend Pod: Node.js x2]
-  Backend --> BackendSvc[backend-svc ClusterIP]
-  BackendSvc --> MySQL[MySQL Pod x1]
-  MySQL --> PVC[Persistent Volume Claim]
-```
+![Diagram](./assets/workflow.png)
 
-# 📂 Project Structure
-student-registration-k8s/
-│── frontend/
-│   ├── index.html
-│   ├── Dockerfile
-│── backend/
-│   ├── server.js
-│   ├── package.json
-│   ├── Dockerfile
-│── k8s-manifests/
-│   ├── frontend.yaml
-│   ├── backend.yaml
-│   ├── mysql.yaml
-│   ├── pvc.yaml
-│── .gitignore
-│── README.md
+## 📂 Project Structure
+![Diagram](./assets/project.png)
+
+---
+
+## 🚀 Deployment Guide
+Some Basic Commands I used-
+ minikube start
+ minikube image build -t frontend:v1 ./frontend
+ minikube image build -t backend:v1 ./backend
+ kubectl apply -f k8s-manifests/
+ kubectl get pods
+ kubectl get svc
+ minikube service frontend-svc
 
 
-# 🚀 Deployment Guide
-1️⃣ Start Minikube
-minikube start
+## 🧑‍💻 Skills Demonstrated
+- Kubernetes (Deployments, Services, Probes, PVCs)
+- Docker image building & local registry (Minikube)
+- 3-tier architecture (Frontend, Backend, Database)
+- Self-healing workloads with liveness/readiness probes
+- Persistent storage with PVC in Kubernetes
 
-2️⃣ Build Images Locally
- # Build frontend image
-minikube image build -t frontend:v1 ./frontend
- # Build backend image
-minikube image build -t backend:v1 ./backend
-
-3️⃣ Apply Kubernetes Manifests
-kubectl apply -f k8s-manifests/
-
-4️⃣ Check Pods & Services
-kubectl get pods
-kubectl get svc
-
-5️⃣ Access Application
-minikube service frontend-svc
-
-# 📢 Key Takeaways
-
--Learned how to deploy a multi-tier application on Kubernetes
-
--Implemented self-healing with liveness & readiness probes
-
--Understood service exposure (NodePort & ClusterIP)
-
--Ensured data persistence using PVCs
 
 👨‍💻 Author: Michael Ibeh
 🔗 Connect with me on LinkedIn: https://linkedin.com/in/michael-ibeh-ify
