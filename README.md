@@ -30,12 +30,12 @@ The system allows users to register their details through a frontend interface. 
 # 🖼️ Architecture Diagram
 ```mermaid
 flowchart TD
-  Browser[User's Browser] --> Frontend[Frontend Pod - Nginx (x3)]
-  Frontend --> FrontendSvc[frontend-svc (NodePort)]
-  FrontendSvc --> Backend[Backend Pod - Node.js (x2)]
-  Backend --> BackendSvc[backend-svc (ClusterIP)]
-  BackendSvc --> MySQL[MySQL Pod (x1)]
-  MySQL --> PVC[(Persistent Volume Claim)]
+  Browser[User's Browser] --> Frontend[Frontend Pod: Nginx x3]
+  Frontend --> FrontendSvc[frontend-svc NodePort]
+  FrontendSvc --> Backend[Backend Pod: Node.js x2]
+  Backend --> BackendSvc[backend-svc ClusterIP]
+  BackendSvc --> MySQL[MySQL Pod x1]
+  MySQL --> PVC[Persistent Volume Claim]
 ```
 
 # 📂 Project Structure
